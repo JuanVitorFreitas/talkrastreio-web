@@ -1,24 +1,14 @@
-import React, { useRef, useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import api from '../../services/api';
+import React, { useRef } from 'react';
+import { useHistory } from 'react-router-dom';
 
 export default function Home() {
     let history = useHistory();
-    const [tracking, setTracking] = useState([]);
 
     const trackingCode = useRef();
 
     async function handleSubmit(e) {
         e.preventDefault();
-        try {
-            const response = await api.post('/', {
-                trackingCode: trackingCode.current,
-            });
-            setTracking(response.data);
-            history.push(`/result/${response.data.code}`, response.data);
-        } catch(err) {
-            alert('Erro ao pesquisar o código, Se o erro persistir, por favor entre em contato.')
-        }
+        history.push(`/result/${trackingCode.current}`);
     }
     
 
