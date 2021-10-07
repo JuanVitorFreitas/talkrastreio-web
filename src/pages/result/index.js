@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
-import { Card, CardContent, Typography } from '@material-ui/core';
 import Header from '../../components/Header/Header';
+import Cards from '../../components/Card/Card';
 import api from '../../services/api';
 
 
-export default function Result() {
+export default function Result(props) {
 
 	const [trackings, setTrackings] = useState([]);
 
@@ -35,18 +35,7 @@ export default function Result() {
 			<ul>
 				{
 					trackings.map((t) => t.events.map((e) => (
-						<Card variant="outlined">
-							<CardContent>
-								<Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-									<p>{e.date}</p>
-								</Typography>
-								<p>{e.unity}</p>
-								<p>{e.city}</p>
-								<p>{e.state}</p>
-								<p>{e.status}</p>
-								<p>{e.subStatus}</p>
-							</CardContent>
-						</Card>
+						<Cards />
 					)))
 				}
 			</ul>
