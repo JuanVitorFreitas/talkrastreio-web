@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 
 import { Container } from '@material-ui/core';
-import { makeStyles } from '@material-ui/styles';
 
 import Header from '../../components/Header/Header';
 import Cards from '../../components/Card/Card';
@@ -10,8 +9,8 @@ import api from '../../services/api';
 
 
 import { DateTime } from 'luxon';
-import statusColors from '../../statusColors';
 
+import { makeStyles } from '@material-ui/styles';
 
 export default function Result() {
 
