@@ -1,18 +1,33 @@
 import { Card as MaterialCard, CardContent, Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/styles';
+import statusColors from '../../statusColors';
+import { DateTime } from 'luxon';
 
-function Cards(e) {
+const useStyles = makeStyles({
+	card: {
+		backgroundColor: "#fff",
+		marginTop: '1rem',
+		borderRadius: '10px',
+		borderLeft: `5px solid ${statusColors.Default}`,
+	},
+	title: {
+		fontFamily: 'Courier New, monospace',
+	}
+});
+
+
+function Cards({ event }) {
+
+	const classes = useStyles();
 
 	return (
-		<MaterialCard variant="outlined">
+		<MaterialCard className={classes.card} style={{ borderLeft: `5px solid ${statusColors[event.status]}` }} variant="outlined">
 			<CardContent>
-				<Typography variant="h5" component="div">
-					<p>{e.date}</p>
-					<p>{e.unity}</p>
-					<p>{e.city}</p>
-					<p>{e.state}</p>
-					<p>{e.status}</p>
-					<p>{e.subStatus}</p>
+				<Typography component="div">
+					<p>{event.unity} em {event.city} - {event.state}</p>
 				</Typography>
+				<p>{event.status} {DateTime.fromISO(event.date).toRelative({ locale: 'pt-br', style: 'narrow' },)}.</p>
+				<p dangerouslySetInnerHTML={{ __html: event.subStatus }}></p>
 			</CardContent>
 		</MaterialCard>
 	)

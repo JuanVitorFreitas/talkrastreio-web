@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Button, TextField, FormControl } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
@@ -13,6 +13,9 @@ const useStyles = makeStyles({
 		marginLeft: '0.5rem',
 		backgroundColor: '#580463',
 		fontFamily: 'Courier New, monospace',
+		'&:disabled': {
+			cursor: 'not-allowed',
+		}
 	},
 	icon: {
 		marginLeft: '0.5rem',
@@ -23,25 +26,23 @@ const useStyles = makeStyles({
 
 function Form() {
 
-	async function handleSubmit(e) {
-		e.preventDefault();
-		history.push(`/result/${trackingCode.current}`);
-	}
-
-	function validateInputs() {
-		if (!trackingCode.current || trackingCode.current.length < 13) {
-			return setSubmitEnabled(false);
-		}
-		return setSubmitEnabled(true);
-	}
-
 	const [submitEnabled, setSubmitEnabled] = useState(false);
 
 	let history = useHistory();
 
-	const trackingCode = useRef();
+	const [trackingCode, setTrackingCode] = useState('');
 
 	const classes = useStyles();
+
+	useEffect(() => {
+		setSubmitEnabled(trackingCode.length === 13);
+	}, [trackingCode])
+
+	async function handleSubmit(e) {
+		e.preventDefault();
+		history.push(`/result/${trackingCode}`);
+	}
+
 
 	return (
 		<form className={classes.form} onSubmit={handleSubmit}>
@@ -50,9 +51,10 @@ function Form() {
 				id="standard-search"
 				label="Código de rastreio"
 				variant="standard"
-				onChange={(e) => {
-					trackingCode.current = e.target.value;
-					validateInputs();
+				onChange={(e) => setTrackingCode(e.target.value)}
+				value={trackingCode}
+				inputProps={{
+					maxlength: 13,
 				}}
 			/>
 			<Button
