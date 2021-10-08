@@ -1,9 +1,10 @@
 import { makeStyles } from '@material-ui/styles';
-import { AppBar, Toolbar, Typography, Button } from "@material-ui/core";
 
 import LocalShippingIcon from '@material-ui/icons/LocalShipping';
 import Home from '@material-ui/icons/Home';
 import Info from '@material-ui/icons/Info';
+
+import { AppBar, Toolbar, Typography, Button } from "@material-ui/core";
 
 import { Link as RouterLink } from "react-router-dom";
 
@@ -28,6 +29,11 @@ const useStyles = makeStyles({
 	toolbar: {
 		display: "flex",
 		justifyContent: "space-between",
+	},
+	div: {
+		display: 'flex',
+		flexDirection: 'row',
+		alignItems: 'center',
 	}
 });
 
@@ -69,8 +75,10 @@ function Header() {
 	const displayDesktop = () => {
 		return (
 			<Toolbar className={classes.toolbar}>
-				{talkRastreioLogo}
-				<LocalShippingIcon className={classes.icon} />
+				<div className={classes.div}>
+					{talkRastreioLogo}
+					<LocalShippingIcon className={classes.icon} />
+				</div>
 				<div>{getMenuButtons()}</div>
 			</Toolbar>
 		)
@@ -84,7 +92,7 @@ function Header() {
 
 	return (
 		<header>
-			<AppBar className={classes.header} >{displayDesktop()}</AppBar>
+			<AppBar className={classes.header ? classes.header : 'teste'} >{displayDesktop()}</AppBar>
 		</header>
 	)
 }
