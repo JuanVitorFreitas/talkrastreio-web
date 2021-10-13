@@ -1,4 +1,4 @@
-import { Card as MaterialCard, CardContent, Skeleton, Typography } from '@material-ui/core';
+import { Card as MaterialCard, CardContent, Typography } from '@material-ui/core';
 import statusColors from '../Status/statusColors';
 import statusEmojis from '../Status/statusEmojis';
 import { DateTime } from 'luxon';
