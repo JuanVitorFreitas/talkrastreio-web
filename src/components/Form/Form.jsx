@@ -34,7 +34,7 @@ function Form() {
 				id="standard-search"
 				label="Código de rastreio"
 				variant="standard"
-				onChange={(e) => setTrackingCode(e.target.value)}
+				onChange={(e) => setTrackingCode(e.target.value.toUpperCase())}
 				value={trackingCode}
 				inputProps={{
 					maxLength: 13,

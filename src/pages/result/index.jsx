@@ -49,8 +49,8 @@ export default function Result() {
 				<div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
 					<h1 style={{ marginBottom: '0' }}>{loading ?
 						<CircularProgress style={{ color: '#580463', width: '2em', height: '2em', marginTop: '8em' }} /> : trackings && trackings.code}</h1>
-					<p style={{ marginTop: '0', fontWeight: '600', color: '#353b48' }}>{trackings && trackings.events[0].status}{trackings && statusEmojis[trackings.events[0].status]}</p>
-					<p>{trackings && DateTime.fromISO(trackings.updatedAt).toFormat("'Última Atualização: 'dd/MM/yyyy 'às' HH:mm")}</p>
+					<p style={{ marginTop: '0', fontWeight: '600', color: '#353b48' }}>{trackings && trackings.events[0]?.status}{trackings && statusEmojis[trackings.events[0]?.status]}</p>
+					<p>{trackings && (trackings.events.length > 0 ? DateTime.fromISO(trackings.updatedAt).toFormat("'Última Atualização: 'dd/MM/yyyy 'às' HH:mm") : 'Nenhuma atualização encontrada😢')}</p>
 					<ul>
 						{
 							trackings && trackings.events.map((e) => (
