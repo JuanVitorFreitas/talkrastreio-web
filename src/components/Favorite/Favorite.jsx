@@ -62,7 +62,7 @@ function Favorites() {
 									variant="text"
 									onClick={() => toggleFavorite(query.code)}
 								>
-									{isCodeInFavorites(query.code) ? <FavoriteIcon sx={{ color: '#580463' }} /> : <FavoriteBorderIcon sx={{ color: '#580463' }} />}
+									<FavoriteIcon sx={{ color: '#580463' }} />
 
 								</IconButton>
 							</div>
