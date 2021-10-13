@@ -1,26 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { Button, TextField, FormControl } from '@material-ui/core';
-import { makeStyles } from '@material-ui/styles';
+import { Button, TextField } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
-
-const useStyles = makeStyles({
-	form: {
-		marginTop: '5rem',
-	},
-	button: {
-		marginTop: '0.5rem',
-		marginLeft: '0.5rem',
-		backgroundColor: '#580463',
-		fontFamily: 'Courier New, monospace',
-		'&:disabled': {
-			cursor: 'not-allowed',
-		}
-	},
-	icon: {
-		marginLeft: '0.5rem',
-	}
-});
+import useCodeHistory from '../../hooks/useCodeHistory';
 
 
 
@@ -28,11 +10,11 @@ function Form() {
 
 	const [submitEnabled, setSubmitEnabled] = useState(false);
 
-	let history = useHistory();
+	const history = useHistory();
+
+	const { appendToHistory } = useCodeHistory();
 
 	const [trackingCode, setTrackingCode] = useState('');
-
-	const classes = useStyles();
 
 	useEffect(() => {
 		setSubmitEnabled(trackingCode.length === 13);
@@ -40,12 +22,13 @@ function Form() {
 
 	async function handleSubmit(e) {
 		e.preventDefault();
+		appendToHistory(trackingCode);
 		history.push(`/result/${trackingCode}`);
 	}
 
 
 	return (
-		<form className={classes.form} onSubmit={handleSubmit}>
+		<form style={{ marginTop: '5rem', textAlign: 'center' }} onSubmit={handleSubmit}>
 			<TextField
 				required={true}
 				id="standard-search"
@@ -54,18 +37,28 @@ function Form() {
 				onChange={(e) => setTrackingCode(e.target.value)}
 				value={trackingCode}
 				inputProps={{
-					maxlength: 13,
+					maxLength: 13,
 				}}
 			/>
 			<Button
-				className={classes.button}
+				sx={{
+					marginTop: '0.5rem',
+					marginLeft: '0.5rem',
+					backgroundColor: '#580463',
+					fontFamily: 'Courier New, monospace',
+					'&:disabled': {
+						cursor: 'not-allowed',
+					}
+				}}
 				disabled={!submitEnabled}
 				variant="contained"
 				color='secondary'
 				type='submit'
 			>
 				Rastrear
-				<SearchIcon className={classes.icon} />
+				<SearchIcon sx={{
+					marginLeft: '0.5rem',
+				}} />
 			</Button>
 		</form>
 	)
