@@ -2,18 +2,19 @@ import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Home from '../pages/home/index';
 import Result from '../pages/result/index';
-
-
+import HistoryContextProvider from '../contexts/historyContext';
 
 export default function Router() {
-    return (
-        <React.StrictMode>
-            <BrowserRouter>
-                <Switch>
-                    <Route path="/" component={Home} exact />
-                    <Route path="/result/:code" exact component={Result} />
-                </Switch>
-            </BrowserRouter>
-        </React.StrictMode>
-    )
+	return (
+		<React.StrictMode>
+			<BrowserRouter>
+				<HistoryContextProvider>
+					<Switch>
+						<Route path="/" component={Home} exact />
+						<Route path="/result/:code" exact component={Result} />
+					</Switch>
+				</HistoryContextProvider>
+			</BrowserRouter>
+		</React.StrictMode>
+	)
 }
