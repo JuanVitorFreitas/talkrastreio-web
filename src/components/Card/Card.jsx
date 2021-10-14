@@ -19,7 +19,7 @@ function Cards({ event }) {
 				<Typography component="div">
 					<p>{event.unity} em {event.city} - {event.state}</p>
 				</Typography>
-				<p>{event.status} {DateTime.fromISO(event.date).toRelative({ locale: 'pt-br', style: 'narrow' },)} {statusEmojis[event.status]}.</p>
+				<p>{event.status} {DateTime.fromISO(event.date).toFormat("'no dia' DDD", { locale: "pt-BR" })} {statusEmojis[event.status]}.</p>
 				<p dangerouslySetInnerHTML={{ __html: event.subStatus }}></p>
 			</CardContent>
 		</MaterialCard>
