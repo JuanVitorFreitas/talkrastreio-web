@@ -1,6 +1,5 @@
 import { Container, Typography, List, ListItem, IconButton, Tooltip } from '@material-ui/core';
 import RedirectIcon from '@material-ui/icons/ExitToApp';
-import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 
 import { useHistory } from 'react-router-dom';
@@ -14,7 +13,6 @@ function Favorites() {
 	const {
 		favorites,
 		toggleFavorite,
-		isCodeInFavorites
 	} = useCodeHistory();
 
 
