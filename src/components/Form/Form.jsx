@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { Button, TextField } from '@material-ui/core';
-import SearchIcon from '@material-ui/icons/Search';
+import { Button, TextField } from '@mui/material';
+import SearchIcon from '@mui/icons-material/Search';
 import useCodeHistory from '../../hooks/useCodeHistory';
 
 

@@ -10,11 +10,15 @@ export default function HistoryContextProvider({ children }) {
 	const [favorites, setFavorites] = useState([]);
 
 	useEffect(() => {
-		const storedHistory = JSON.parse(localStorage.getItem('@talkrastreio/codeHistory') || '[]');
 		const storedFavorites = JSON.parse(localStorage.getItem('@talkrastreio/favorites') || '[]');
-		setCodeHistory(storedHistory);
-		setFavorites(storedFavorites);
+		setTimeout(() => setFavorites(storedFavorites), 150);
 	}, []);
+
+	useEffect(() => {
+		const storedHistory = JSON.parse(localStorage.getItem('@talkrastreio/codeHistory') || '[]');
+		setTimeout(() => setCodeHistory(storedHistory), 250);
+	}, []);
+
 
 	useEffect(() => {
 		if (codeHistory === null) {

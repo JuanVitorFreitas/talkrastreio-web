@@ -1,12 +1,17 @@
-import { Container, Typography, List, ListItem, IconButton, Tooltip } from '@material-ui/core';
-import RedirectIcon from '@material-ui/icons/ExitToApp';
-import FavoriteIcon from '@material-ui/icons/Favorite';
+import { Container, Typography, List, ListItem, IconButton, Tooltip, Collapse } from '@mui/material';
+import { ExitToApp as RedirectIcon, Favorite as FavoriteIcon } from '@mui/icons-material';
+import { TransitionGroup } from 'react-transition-group';
+import Slide from '@mui/material/Slide';
+import Fade from '@mui/material/Fade';
 
 import { useHistory } from 'react-router-dom';
 
 import useCodeHistory from '../../hooks/useCodeHistory';
+import { useState, useEffect } from 'react';
 
 function Favorites() {
+
+	const [favoritesShown, setFavoritesShown] = useState(false);
 
 	const history = useHistory();
 
@@ -14,6 +19,10 @@ function Favorites() {
 		favorites,
 		toggleFavorite,
 	} = useCodeHistory();
+
+	useEffect(() => {
+		setFavoritesShown(favorites.length > 0);
+	}, [favorites])
 
 
 	function clickRedirect(query) {
@@ -23,51 +32,55 @@ function Favorites() {
 
 	return (
 		<Container maxWidth="xs" sx={{ borderRadius: '10px' }} >
-			{favorites.length > 0 ?
-				<List style={{ textAlign: 'center' }}>
-					<Typography variant="h5" sx={{ textAlign: 'center', fontFamily: 'Noto Sans Mono, monospace' }}>
-						Favoritos
-					</Typography>
+			<List style={{ textAlign: 'center' }}>
+				<Collapse in={favoritesShown}>
+					<Slide direction="down" in={favoritesShown}>
+						<Typography variant="h5" sx={{ textAlign: 'center', fontFamily: 'Noto Sans Mono, monospace' }}>
+							Favoritos
+						</Typography>
+					</Slide>
+				</Collapse>
+				<TransitionGroup>
 					{favorites && favorites.map((query) => (
-						<ListItem
-							key={query.code}
-							sx={{
-								fontFamily: 'Noto Sans Mono, monospace',
-								padding: 0,
-							}}>
-							<Tooltip title={query.code} arrow>
-								<Typography variant='body2' sx={{ textAlign: 'center', fontWeight: 700 }}>
-									{query.name}
-								</Typography>
-							</Tooltip>
-							<div
-								style={{
-									display: 'flex',
-									flexDirection: 'row',
-									alignItems: 'center',
-									paddingLeft: '0',
-									marginLeft: 'auto',
+						<Collapse key={query.code} easing='ease' timeout={400}>
+							<ListItem
+								sx={{
+									fontFamily: 'Noto Sans Mono, monospace',
+									padding: 0,
 								}}>
-								<IconButton
-									variant="text"
-									onClick={() => clickRedirect(query)}
-								>
-									<RedirectIcon
-										sx={{ color: '#580463' }}
-									/>
-								</IconButton>
-								<IconButton
-									variant="text"
-									onClick={() => toggleFavorite(query.code)}
-								>
-									<FavoriteIcon sx={{ color: '#580463' }} />
-
-								</IconButton>
-							</div>
-						</ListItem>
+								<Tooltip title={query.code} arrow>
+									<Typography variant='body2' sx={{ textAlign: 'center', fontWeight: 700 }}>
+										{query.name}
+									</Typography>
+								</Tooltip>
+								<div
+									style={{
+										display: 'flex',
+										flexDirection: 'row',
+										alignItems: 'center',
+										paddingLeft: '0',
+										marginLeft: 'auto',
+									}}>
+									<IconButton
+										variant="text"
+										onClick={() => clickRedirect(query)}
+									>
+										<RedirectIcon
+											sx={{ color: '#580463' }}
+										/>
+									</IconButton>
+									<IconButton
+										variant="text"
+										onClick={() => toggleFavorite(query.code)}
+									>
+										<FavoriteIcon sx={{ color: '#580463' }} />
+									</IconButton>
+								</div>
+							</ListItem>
+						</Collapse>
 					))}
-				</List>
-				: ""}
+				</TransitionGroup>
+			</List>
 		</Container >
 	)
 }

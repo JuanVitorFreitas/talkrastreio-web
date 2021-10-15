@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 
-import { Container, CircularProgress } from '@material-ui/core';
+import { Container, CircularProgress } from '@mui/material';
+
 
 import Header from '../../components/Header/Header';
 import Cards from '../../components/Card/Card';
@@ -23,7 +24,7 @@ export default function Result() {
 	useEffect(() => {
 		async function fetchTracking() {
 			try {
-				const response = await api.post('/', { trackingCode: code });
+				const response = await api.post(`/tracking/${code}`);
 				setTrackings(response.data);
 				setLoading(true);
 			} catch (err) {

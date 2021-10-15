@@ -1,6 +1,9 @@
-import { Card as MaterialCard, CardContent, Typography } from '@material-ui/core';
+import { Card as MaterialCard, CardContent, Typography } from '@mui/material';
+
+
 import statusColors from '../Status/statusColors';
 import statusEmojis from '../Status/statusEmojis';
+
 import { DateTime } from 'luxon';
 
 
@@ -20,7 +23,7 @@ function Cards({ event }) {
 					<p>{event.unity} em {event.city} - {event.state}</p>
 				</Typography>
 				<p>{event.status} {DateTime.fromISO(event.date).toFormat("'no dia' DDD", { locale: "pt-BR" })} {statusEmojis[event.status]}.</p>
-				<p dangerouslySetInnerHTML={{ __html: event.subStatus }}></p>
+				<p dangerouslySetInnerHTML={{ __html: event.subStatus.join('<br/>') }}></p>
 			</CardContent>
 		</MaterialCard>
 	)

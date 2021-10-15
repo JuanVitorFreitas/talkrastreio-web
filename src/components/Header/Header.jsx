@@ -1,8 +1,6 @@
-import LocalShippingIcon from '@material-ui/icons/LocalShipping';
-import Home from '@material-ui/icons/Home';
-import Info from '@material-ui/icons/Info';
+import { Home, Info, LocalShipping as LocalShippingIcon } from '@mui/icons-material';
 
-import { AppBar, Toolbar, Typography, Button } from "@material-ui/core";
+import { AppBar, Toolbar, Typography, Button } from "@mui/material";
 
 import { Link as RouterLink } from "react-router-dom";
 
