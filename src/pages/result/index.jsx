@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 
-import { Container, CircularProgress } from '@mui/material';
+import { Container, CircularProgress, Collapse } from '@mui/material';
 
 
 import Header from '../../components/Header/Header';
@@ -11,6 +11,7 @@ import statusEmojis from '../../components/Status/statusEmojis';
 
 
 import { DateTime } from 'luxon';
+import { TransitionGroup } from 'react-transition-group';
 
 export default function Result() {
 
@@ -53,13 +54,17 @@ export default function Result() {
 					<p style={{ marginTop: '0', fontWeight: '600', color: '#353b48' }}>{trackings && trackings.events[0]?.status}{trackings && statusEmojis[trackings.events[0]?.status]}</p>
 					<p>{trackings && (trackings.events.length > 0 ? DateTime.fromISO(trackings.updatedAt).toFormat("'Última Atualização: 'dd/MM/yyyy 'às' HH:mm") : 'Nenhuma atualização encontrada😢')}</p>
 					<ul>
-						{
-							trackings && trackings.events.map((e) => (
-								<Cards
-									key={e.date}
-									event={e} />
-							))
-						}
+						<TransitionGroup>
+							{
+								trackings && trackings.events.map((e) => (
+									<Collapse timeout={700}>
+										<Cards
+											key={e.date}
+											event={e} />
+									</Collapse>
+								))
+							}
+						</TransitionGroup>
 					</ul>
 				</div>
 			</Container>
