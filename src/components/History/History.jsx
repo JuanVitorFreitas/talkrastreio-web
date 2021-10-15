@@ -1,7 +1,6 @@
 import { CardContent, Container, Typography, List, ListItem, IconButton, Collapse } from '@mui/material';
 import { Delete as DeleteIcon, ExitToApp as RedirectIcon, FavoriteBorder as FavoriteBorderIcon, Favorite as FavoriteIcon } from '@mui/icons-material';
 import { TransitionGroup } from 'react-transition-group';
-import Slide from '@mui/material/Slide';
 
 import { useHistory } from 'react-router-dom';
 

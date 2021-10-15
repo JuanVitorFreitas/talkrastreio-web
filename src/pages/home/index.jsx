@@ -1,9 +1,8 @@
-import { Container, Box, Card, Collapse } from '@mui/material';
+import { Container, Box, Card } from '@mui/material';
 import Header from '../../components/Header/Header';
 import Form from '../../components/Form/Form';
 import History from '../../components/History/History';
 import Favorite from '../../components/Favorite/Favorite';
-import { TransitionGroup } from 'react-transition-group';
 
 
 export default function Home() {

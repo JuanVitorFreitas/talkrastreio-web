@@ -2,7 +2,6 @@ import { Container, Typography, List, ListItem, IconButton, Tooltip, Collapse } 
 import { ExitToApp as RedirectIcon, Favorite as FavoriteIcon } from '@mui/icons-material';
 import { TransitionGroup } from 'react-transition-group';
 import Slide from '@mui/material/Slide';
-import Fade from '@mui/material/Fade';
 
 import { useHistory } from 'react-router-dom';
 
