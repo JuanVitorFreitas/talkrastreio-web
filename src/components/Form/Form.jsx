@@ -28,7 +28,7 @@ function Form() {
 
 
 	return (
-		<form style={{ marginTop: '5rem', textAlign: 'center' }} onSubmit={handleSubmit}>
+		<form style={{ textAlign: 'center' }} onSubmit={handleSubmit}>
 			<TextField
 				required={true}
 				id="standard-search"

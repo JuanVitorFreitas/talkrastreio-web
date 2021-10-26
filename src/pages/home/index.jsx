@@ -8,9 +8,9 @@ import Favorite from '../../components/Favorite/Favorite';
 export default function Home() {
 
 	return (
-		<div className="App">
-			<Container maxWidth="xs" >
-				<Header />
+		<div>
+			<Header />
+			<Container maxWidth="xs">
 				<Box>
 					<Form />
 				</Box>

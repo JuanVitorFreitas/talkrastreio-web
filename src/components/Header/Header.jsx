@@ -5,7 +5,7 @@ import { AppBar, Toolbar, Typography, Button } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 
 
-function Header() {
+function Header({ children }) {
 
 	const headerButtons = [
 		{
@@ -63,7 +63,10 @@ function Header() {
 						marginLeft: '0.4rem',
 					}} />
 				</div>
-				<div style={{ display: 'flex' }}>{getMenuButtons()}</div>
+				<div style={{ display: 'flex' }}>
+					{children}
+					{getMenuButtons()}
+				</div>
 			</Toolbar>
 		)
 	};
@@ -77,9 +80,11 @@ function Header() {
 	return (
 		<div>
 			<AppBar
+				position='relative'
 				sx={{
 					bgcolor: '#580463',
-				}}>{displayDesktop()}</AppBar>
+				}}>{displayDesktop()}
+			</AppBar>
 		</div>
 	)
 }

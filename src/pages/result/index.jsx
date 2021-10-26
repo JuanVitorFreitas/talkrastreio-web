@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 
-import { Container, CircularProgress, Collapse } from '@mui/material';
+import { Container, CircularProgress, Collapse, Typography } from '@mui/material';
 
 
 import Header from '../../components/Header/Header';
+import Form from '../../components/Form/Form';
 import Cards from '../../components/Card/Card';
 import api from '../../services/api';
 import statusEmojis from '../../components/Status/statusEmojis';
@@ -12,6 +13,7 @@ import statusEmojis from '../../components/Status/statusEmojis';
 
 import { DateTime } from 'luxon';
 import { TransitionGroup } from 'react-transition-group';
+import { Box } from '@mui/system';
 
 export default function Result() {
 
@@ -42,17 +44,20 @@ export default function Result() {
 			<Header />
 			<Container
 				sx={{
-					paddingTop: '4rem',
 					display: 'flex',
 					alignItems: 'center',
 					flexDirection: 'column',
 				}}
 				maxWidth="md">
+				<Typography variant='body1' sx={{ marginTop: '2rem', fontFamily: 'Noto Sans Mono, monospace', fontWeight: '700', fontSize: '100%' }}>
+					REALIZAR OUTRA PESQUISA
+				</Typography>
+				<Form style={{ marginTop: 0, textAlign: 'center' }} />
 				<div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
 					<h1 style={{ marginBottom: '0' }}>{loading ?
-						<CircularProgress style={{ color: '#580463', width: '2em', height: '2em', marginTop: '8em' }} /> : trackings && trackings.code}</h1>
+						<CircularProgress style={{ color: '#580463', width: '2em', height: '2em', marginTop: '6em' }} /> : trackings && trackings.code}</h1>
 					<p style={{ marginTop: '0', fontWeight: '600', color: '#353b48' }}>{trackings && trackings.events[0]?.status}{trackings && statusEmojis[trackings.events[0]?.status]}</p>
-					<p>{trackings && (trackings.events.length > 0 ? DateTime.fromISO(trackings.updatedAt).toFormat("'Última Atualização: 'dd/MM/yyyy 'às' HH:mm") : 'Nenhuma atualização encontrada😢')}</p>
+					<p style={{ margin: 0 }}>{trackings && (trackings.events.length > 0 ? DateTime.fromISO(trackings.updatedAt).toFormat("'Última Atualização: 'dd/MM/yyyy 'às' HH:mm") : 'Nenhuma atualização encontrada😢')}</p>
 					<ul>
 						<TransitionGroup>
 							{
