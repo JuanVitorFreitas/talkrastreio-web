@@ -48,10 +48,6 @@ export default function Result() {
 					flexDirection: 'column',
 				}}
 				maxWidth="md">
-				<Typography variant='body1' sx={{ marginTop: '2rem', fontFamily: 'Noto Sans Mono, monospace', fontWeight: '700', fontSize: '100%' }}>
-					REALIZAR OUTRA PESQUISA
-				</Typography>
-				<Form style={{ marginTop: 0, textAlign: 'center' }} />
 				<div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
 					<h1 style={{ marginBottom: '0' }}>{loading ?
 						<CircularProgress style={{ color: '#580463', width: '2em', height: '2em', marginTop: '6em' }} /> : trackings && trackings.code}</h1>
