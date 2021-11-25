@@ -1,8 +1,8 @@
 import { Card as MaterialCard, CardContent, Typography } from '@mui/material';
 
 
-import statusColors from '../Status/statusColors';
-import statusEmojis from '../Status/statusEmojis';
+import statusColors from '../../utils/Status/statusColors';
+import statusEmojis from '../../utils/Status/statusEmojis';
 
 import { DateTime } from 'luxon';
 

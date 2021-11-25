@@ -8,12 +8,11 @@ import Header from '../../components/Header/Header';
 import Form from '../../components/Form/Form';
 import Cards from '../../components/Card/Card';
 import api from '../../services/api';
-import statusEmojis from '../../components/Status/statusEmojis';
+import statusEmojis from '../../utils/Status/statusEmojis';
 
 
 import { DateTime } from 'luxon';
 import { TransitionGroup } from 'react-transition-group';
-import { Box } from '@mui/system';
 
 export default function Result() {
 
