@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 
-import { Container, CircularProgress, Collapse, Typography } from '@mui/material';
+import { Container, CircularProgress, Collapse } from '@mui/material';
 
 
 import Header from '../../components/Header/Header';
-import Form from '../../components/Form/Form';
 import Cards from '../../components/Card/Card';
 import api from '../../services/api';
 import statusEmojis from '../../utils/Status/statusEmojis';
