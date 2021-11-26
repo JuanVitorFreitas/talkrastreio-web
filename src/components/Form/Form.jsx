@@ -36,9 +36,10 @@ function Form() {
 		<form style={{ textAlign: 'center', marginTop: '20px' }} onSubmit={handleSubmit}>
 			<TextField
 				required={true}
-				id="outlined-basic"
+				id="outlined-search"
 				label="Código de rastreio"
-				variant="outlined"
+				type="search"
+				color='secondary'
 				onChange={(e) => setTrackingCode(e.target.value.toUpperCase())}
 				value={trackingCode}
 				inputProps={{
