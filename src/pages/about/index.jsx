@@ -64,7 +64,7 @@ export default function About() {
 							src='https://github.com/JuanVitorFreitas.png'
 							sx={{ marginTop: '10px', maxWidth: '250px', width: '30%', height: 'auto', boxShadow: '0 0 0.5em black' }} />
 						<Typography variant='h4' sx={{ marginTop: '20px' }}>{language === 'portuguese' ? 'Informações Básicas' : 'Basic Information'}</Typography>
-						<Typography variant='h6' sx={{ marginTop: '20px' }}>{basicInformationText[language]}</Typography>
+						<Typography variant='h6' sx={{ marginTop: '20px', marginLeft: '10px', marginRight: '10px' }}>{basicInformationText[language]}</Typography>
 					</Grid>
 					<Grid item xs={8} sx={isDesktop ? { display: 'flex' } : { display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
 						<Typography variant='h5' sx={{ marginTop: '20px' }}>{language === 'portuguese' ? 'Links Úteis' : 'Useful Links'}</Typography>

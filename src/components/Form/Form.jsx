@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { Button, TextField } from '@mui/material';
+import { Button, TextField, useTheme } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import useCodeHistory from '../../hooks/useCodeHistory';
+import useMediaQuery from '@mui/material/useMediaQuery';
+
 
 
 
@@ -16,6 +18,9 @@ function Form() {
 
 	const [trackingCode, setTrackingCode] = useState('');
 
+	const theme = useTheme();
+	const isDesktop = useMediaQuery(theme.breakpoints.up('md'));
+
 	useEffect(() => {
 		setSubmitEnabled(trackingCode.length === 13);
 	}, [trackingCode])
@@ -28,12 +33,12 @@ function Form() {
 
 
 	return (
-		<form style={{ textAlign: 'center' }} onSubmit={handleSubmit}>
+		<form style={{ textAlign: 'center', marginTop: '20px' }} onSubmit={handleSubmit}>
 			<TextField
 				required={true}
-				id="standard-search"
+				id="outlined-basic"
 				label="Código de rastreio"
-				variant="standard"
+				variant="outlined"
 				onChange={(e) => setTrackingCode(e.target.value.toUpperCase())}
 				value={trackingCode}
 				inputProps={{
@@ -42,7 +47,8 @@ function Form() {
 			/>
 			<Button
 				sx={{
-					marginTop: '0.5rem',
+					height: '56px',
+					marginTop: isDesktop ? '0' : '0.5rem',
 					marginLeft: '0.5rem',
 					backgroundColor: '#580463',
 					fontFamily: 'Courier New, monospace',
