@@ -47,7 +47,7 @@ export default function About() {
 						fontWeight: '700',
 						fontSize: "100%",
 						color: 'white'
-					}}>{language === 'portuguese' ? 'VERSÃO INGLÊS' : 'PORTUGUESE VERSION'} </Typography> : ''}
+					}}>{language === 'portuguese' ? 'ENGLISH VERSION' : 'VERSÃO PORTUGUÊS'} </Typography> : ''}
 				</ToggleButton>
 			</Header>
 			<Box>
