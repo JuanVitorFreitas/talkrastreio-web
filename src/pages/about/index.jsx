@@ -11,6 +11,7 @@ import { ToggleButton } from "@mui/material";
 import { Translate } from '@mui/icons-material';
 
 import basicInformationText from '../../utils/Languages/basicInformationText';
+import ContactLinks from '../../components/Links/ContactLinks';
 
 export default function About() {
 
@@ -66,8 +67,9 @@ export default function About() {
 						<Typography variant='h4' sx={{ marginTop: '20px' }}>{language === 'portuguese' ? 'Informações Básicas' : 'Basic Information'}</Typography>
 						<Typography variant='h6' sx={{ marginTop: '20px', marginLeft: '10px', marginRight: '10px' }}>{basicInformationText[language]}</Typography>
 					</Grid>
-					<Grid item xs={8} sx={isDesktop ? { display: 'flex' } : { display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+					<Grid item xs={8} sx={isDesktop ? { display: 'flex', flexDirection: 'column' } : { display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
 						<Typography variant='h5' sx={{ marginTop: '20px' }}>{language === 'portuguese' ? 'Links Úteis' : 'Useful Links'}</Typography>
+						<ContactLinks />
 					</Grid>
 				</Grid>
 			</Box>

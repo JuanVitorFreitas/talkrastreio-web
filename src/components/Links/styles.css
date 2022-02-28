@@ -1,0 +1,14 @@
+.container {
+	width: 150px;
+}
+
+.container a {
+	padding: 10px;
+	transition: background-color .2s ease;
+}
+.container a:hover {
+	background-color: rgba(100, 100, 100, .3);
+}
+.icon {
+	margin-right: 5px;
+}
